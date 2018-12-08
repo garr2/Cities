@@ -3,6 +3,7 @@ package com.example.user.cities.presentation.base
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
+import com.example.user.cities.BR
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 

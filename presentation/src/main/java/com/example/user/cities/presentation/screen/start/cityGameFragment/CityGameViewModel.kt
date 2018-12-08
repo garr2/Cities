@@ -23,11 +23,11 @@ class CityGameViewModel: BaseViewModel<MainRouter>() {
     val playerAnswer = ObservableField<String>("")
 
     fun onOkClick(){
-        removeInArr(playerAnswer.get())
+        removeInArr(playerAnswer.get()!!)
     }
 
     fun onHintClick(){
-       val hintedCity = iiAnswer.get().substring(iiAnswer.get().length - 1)
+       val hintedCity = iiAnswer.get()!!.substring(iiAnswer.get()!!.length - 1)
         playerAnswer.set(hintedCity)
     }
 

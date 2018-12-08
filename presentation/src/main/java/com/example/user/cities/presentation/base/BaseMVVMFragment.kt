@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.user.cities.BR
+
+
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
@@ -24,12 +27,11 @@ abstract class BaseMVVMFragment<VM : BaseViewModel<R>, R: BaseRouter<*>, binding
     abstract fun provideLayoutId() : Int
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-
-        viewModel = provideViewModel()
+       // return super.onCreateView(inflater, container, savedInstanceState)
 
         binding = DataBindingUtil.inflate(inflater,provideLayoutId(),container,false)
-        binding.setVariable(BR.view_model,viewModel)
+        viewModel = provideViewModel()
+        binding.setVariable(BR.view_model,viewModel )// BR.view_model,viewModel
 
         return binding.root
     }
