@@ -2,6 +2,7 @@ package com.example.user.cities.presentation.screen.start
 
 import com.example.user.cities.R
 import com.example.user.cities.presentation.base.BaseRouter
+import com.example.user.cities.presentation.screen.start.cityGameFragment.CityGameFragment
 import com.example.user.cities.presentation.screen.start.cityGameFragment.CityLogoFragment
 import kotlinx.android.synthetic.main.activity_main.view.*
 
@@ -10,11 +11,18 @@ import kotlinx.android.synthetic.main.activity_main.view.*
  */
 class MainRouter(activity: MainActivity): BaseRouter<MainActivity>(activity) {
 
-    fun goToCityGame(){
+    fun goToLogoGame(){
      replaceFragment(activity.supportFragmentManager
              ,CityLogoFragment.getInstance()
              ,R.id.flFragment,false)
     }
+
+    fun goToCitiyGame(){
+        replaceFragment(activity.supportFragmentManager,CityGameFragment(),
+                R.id.flFragment,false)
+    }
+
+
 
 
 }

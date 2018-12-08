@@ -37,7 +37,7 @@ class CityLogoFragment : BaseMVVMFragment<CityLogoViewModel,MainRouter,FragmentH
         var buttonGo: Button = view.findViewById(R.id.buttonGoTo)
 
         buttonGo.setOnClickListener(View.OnClickListener {
-            router?.goToCityGame()
+            router?.goToLogoGame()
 
         })
     }

@@ -10,6 +10,10 @@ import com.example.user.cities.presentation.screen.start.MainRouter
  * Created by user on 08.12.2018.
  */
 class CityGameFragment: BaseMVVMFragment<CityGameViewModel,MainRouter,CityGameFragmentBinding>() {
+
+
+
+
     override fun provideViewModel(): CityGameViewModel {
         return ViewModelProviders.of(this)
                 .get(CityGameViewModel::class.java)
