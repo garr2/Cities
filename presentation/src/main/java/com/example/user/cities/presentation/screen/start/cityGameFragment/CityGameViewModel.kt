@@ -1,8 +1,10 @@
 package com.example.user.cities.presentation.screen.start.cityGameFragment
 
 import android.databinding.ObservableField
+import android.os.CountDownTimer
 import com.example.user.cities.presentation.base.BaseViewModel
 import com.example.user.cities.presentation.screen.start.MainRouter
+import java.util.*
 
 /**
  * Created by user on 08.12.2018.
@@ -10,8 +12,25 @@ import com.example.user.cities.presentation.screen.start.MainRouter
 class CityGameViewModel: BaseViewModel<MainRouter>() {
 
     companion object {
-        const val dict: String = "цукенгшщзхфывапролджэячсмитбю"
+        private const val dict: String = "цукенгшщзхфывапролджэячсмитбю"
     }
+
+    init {
+
+    }
+
+    private val timer = object : CountDownTimer(3600000,1000){
+        override fun onFinish() {
+        }
+
+        override fun onTick(p0: Long) {
+           updateTimer()
+        }
+
+    }
+
+    private var scoreInt = 0
+    private var timeSec: Long = 0
 
     val cityList = HashSet<String>()
 
@@ -23,12 +42,18 @@ class CityGameViewModel: BaseViewModel<MainRouter>() {
     val playerAnswer = ObservableField<String>("")
 
     fun onOkClick(){
-        removeInArr(playerAnswer.get())
+        removeInArr(playerAnswer.get()!!)
     }
 
     fun onHintClick(){
-       val hintedCity = iiAnswer.get().substring(iiAnswer.get().length - 1)
-        playerAnswer.set(hintedCity)
+        if (!iiAnswer.get()!!.isEmpty()) {
+            val hintedCity = iiAnswer.get()!!.substring(iiAnswer.get()!!.length - 1)
+            playerAnswer.set(getCity(hintedCity))
+        } else {
+            playerAnswer.set(getCity(getRandomChar().toString()))
+        }
+
+        score.set("Score: ${--scoreInt}")
     }
 
     fun onEndGameClick(){
@@ -39,6 +64,7 @@ class CityGameViewModel: BaseViewModel<MainRouter>() {
         if (cityList.contains(answer)){
             cityList.remove(answer)
             stopTimer()
+            score.set("Score: ${++scoreInt}")
             iiStep(answer)
         }else{
             errorTetxt.set("Такого города нет.")
@@ -72,11 +98,11 @@ class CityGameViewModel: BaseViewModel<MainRouter>() {
     }
 
     private fun startTimer(){
-
+        timer.start()
     }
 
     private fun stopTimer(){
-
+        timer.cancel()
     }
 
     private fun  playerWin(){
@@ -84,6 +110,19 @@ class CityGameViewModel: BaseViewModel<MainRouter>() {
     }
 
     private fun getRandomChar(): Char{
-        return dict.charAt
+        return dict.elementAt(Random().nextInt(dict.length))
+    }
+
+    private fun updateTimer(){
+        timeOfGame.set("Time: ${secondToString(++timeSec)}")
+    }
+
+    private fun secondToString(seconds: Long): String{
+        val tmpTime = seconds%3600
+        val hours = seconds/3600
+        val minutes = tmpTime/60
+        val seconds = tmpTime%60
+
+        return "$hours:$minutes:$seconds"
     }
 }

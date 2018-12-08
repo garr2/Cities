@@ -6,15 +6,10 @@ apply plugin: 'kotlin-kapt'
 
 
 android {
-    compileSdkVersion 26
-
-
-
+    compileSdkVersion rootProject.compileSdkVersion
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -42,6 +37,7 @@ dependencies {
     api "android.arch.persistence.room:runtime:$room_version"
     kapt "android.arch.persistence.room:compiler:$room_version"
     api "android.arch.persistence.room:rxjava2:$room_version"
+    implementation 'com.google.code.gson:gson:2.8.5'
 
     api project(path: ':domain')
 }
