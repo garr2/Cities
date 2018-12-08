@@ -10,7 +10,7 @@ import com.example.user.cities.presentation.screen.start.MainRouter
 class CityGameViewModel: BaseViewModel<MainRouter>() {
 
     companion object {
-        const val dict = "цукенгшщзхфывапролджэячсмитбю"
+        const val dict: String = "цукенгшщзхфывапролджэячсмитбю"
     }
 
     val cityList = HashSet<String>()
@@ -83,7 +83,7 @@ class CityGameViewModel: BaseViewModel<MainRouter>() {
         errorTetxt.set("ВЫ ВЫИГРАЛИ!)))")
     }
 
-    /*private fun getRandomChar(): Char{
-        return Rand
-    }*/
+    private fun getRandomChar(): Char{
+        return dict.charAt
+    }
 }
