@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="view_model"
+            type="com.example.user.cities.presentation.screen.start.cityGameFragment.CityGameViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvTime"
+            android:text="@{view_model.score}"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvScore"
+            android:text="@{view_model.timeOfGame}"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@{view_model.iiAnswer}"/>
+
+        <EditText
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/etPlayerField"
+            android:text="@={view_model.playerAnswer}"
+            android:textSize="20sp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ok"
+            android:onClick="@{(v) -> view_model.onOkClick()}"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hint"
+            android:onClick="@{(v) -> view_model.onHintClick()}"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/end_game"
+            android:onClick="@{(v) -> view_model.onEndGameClick()}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{view_model.errorText}"/>
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

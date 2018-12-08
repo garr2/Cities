@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Cities</string>
+    <string name="error">error</string>
+    <string name="ok">Ok</string>
+    <string name="hint">Подсказка</string>
+    <string name="end_game">Конец игры</string>
 </resources>
